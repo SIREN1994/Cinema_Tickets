@@ -17,7 +17,7 @@ class SeatController extends Controller
     public function purchase(Seat $seat)
     {
         $seat->update(['seat_state' => 'occupied']);
-        return response()->json(['message' => 'Selected seat is successfully purchased']);
+        return response()->json(['message' => 'Selected seat is successfully purchased', 'Your Seat Number : ']);
     }
 
     // Method to handle seat cancellation

@@ -7,6 +7,7 @@ export default function App() {
   const [selectedSeat, setSelectedSeat] = useState(null);
   const [isCancelling, setIsCancelling] = useState(false);
   const [cancelPassword, setCancelPassword] = useState(''); // State to store the password
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
     axios.get('http://localhost:8000/api/seats')
@@ -37,6 +38,9 @@ export default function App() {
           );
           setSeats(updatedSeats);
           setSelectedSeat(null);
+          setMessage(response.data.message)
+          console.log(response.data.message)
+
         })
         .catch(error => {
           console.error('There was an error purchasing the seat!', error);
@@ -55,6 +59,7 @@ export default function App() {
           setSelectedSeat(null);
           setIsCancelling(false);
           setCancelPassword(''); // Clear the password input
+          setMessage(response.data.message)
         })
         .catch(error => {
           console.error('There was an error cancelling the seat!', error);
@@ -80,6 +85,12 @@ export default function App() {
             ))}
           </div>
         ))}
+        {
+          message&&
+          <div className='success'>
+            <p>{message}</p>
+          </div>
+        }
       </div>
       {selectedSeat && (
         <div className="seat-form">

@@ -55,3 +55,17 @@
   border: 1px solid #ccc;
   background-color: #fff;
 }
+
+.success {
+  display:flex;
+  width: 300px;
+  height: 20px;
+  border: 2px solid green;
+  font-family: 'Franklin Gothic Medium';
+  color: black;
+  background-color: yellowgreen;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  
+}
